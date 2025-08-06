@@ -10,6 +10,7 @@ class CmdHelp:
     PREFIX = PATTERNS[:1]
     WARNING = ""
     INFO = ""
+    SAHIB = ""
 
     def __init__(self, file: str, official : bool = True, file_name : str = None):
         self.FILE = file
@@ -32,7 +33,9 @@ class CmdHelp:
         
         self.COMMANDS[command] = {'command': command, 'params': params, 'usage': usage, 'example': example}
         return self
-    
+    def add_sahib(self, sahib: str):
+        self.SAHIB = sahib
+        return self
     def add_warning(self, warning):
         self.WARNING = warning
         return self
@@ -44,6 +47,8 @@ class CmdHelp:
     def get_result(self):
 
         result = f"**🧩 Modul:** `{self.FILE}`\n"
+        if self.SAHIB:
+            result += f"**👤 Sahib:** {self.SAHIB}\n"
         if self.WARNING == '' and self.INFO == '':
             result += f"**⚡ Status:** {'✅ Təsdiqləndi' if self.IS_OFFICIAL else '❌ Təsdiqlənmədi'}\n\n"
         else:
@@ -72,7 +77,7 @@ class CmdHelp:
         return result
 
     def add(self):
-        CMD_HELP_BOT[self.FILE] = {'info': {'official': self.IS_OFFICIAL, 'warning': self.WARNING, 'info': self.INFO}, 'commands': self.COMMANDS}
+        CMD_HELP_BOT[self.FILE] = {'info': {'official': self.IS_OFFICIAL, 'warning': self.WARNING, 'info': self.INFO, 'sahib': self.SAHIB}, 'commands': self.COMMANDS}
         CMD_HELP[self.FILE] = self.get_result()
         return True
     
@@ -84,3 +89,4 @@ class CmdHelp:
         elif text == 'USERNAMES':
             return '<istifadəçi ad(lar)ı>'
         
+
