@@ -1,0 +1,7 @@
+telethon
+tgcrypto
+telethon-session-sqlalchemy
+gitpython
+pybase64
+requests
+python-dotenv 
