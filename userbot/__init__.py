@@ -52,6 +52,7 @@ PATTERNS = os.environ.get("PATTERNS", ".")
 
 CMD_HELP = {}
 CMD_HELP_BOT = {}
+u = "BrendUserbot"
 
 LANGUAGE = os.environ.get("LANGUAGE", "AZ").upper()
 if not LANGUAGE in ["AZ"]:
@@ -236,3 +237,4 @@ with bot:
     except:
         LOGS.info("BOTLOG_CHATID yeniləməyiniz tövsiyyə olunur.")
         quit(1)
+
